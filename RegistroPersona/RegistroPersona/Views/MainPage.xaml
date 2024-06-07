@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RegistroPersona.MainPage" BackgroundColor="Gray">
+
+    <StackLayout Padding="10" >
+        <Label TextColor="Black">Cédula</Label>
+        <Entry x:Name="CedulaEntry" Placeholder="Cédula"/>
+        <Entry x:Name="NombreEntry" Placeholder="Nombre Completo" />
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="AG.jpg" HeightRequest="25" WidthRequest="25" BackgroundColor="White" Clicked="OnAddClicked" Grid.Row="0" Grid.Column="0"></ImageButton>
+            <Button Text="Actualizar" Clicked="OnUpdateClicked" Grid.Row="0" Grid.Column="1"/>
+            <Button Text="Eliminar" Clicked="OnDeleteClicked" Grid.Row="1" Grid.Column="0"/>
+            <Button Text="Mostrar" Clicked="OnShowClicked" Grid.Row="1" Grid.Column="1"/>
+        </Grid>
+
+        <ListView x:Name="PersonasListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Label Text="{Binding Cedula}" VerticalOptions="Center" WidthRequest="100"/>
+                            <Label Text="{Binding NombreCompleto}" VerticalOptions="Center" WidthRequest="200"/>
+                            <Button Text="Seleccionar" Clicked="OnActualizarRegistroClicked" CommandParameter="{Binding .}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+
+</ContentPage>
